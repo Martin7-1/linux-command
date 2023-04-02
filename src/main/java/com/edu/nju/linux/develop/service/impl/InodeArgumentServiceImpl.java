@@ -16,15 +16,15 @@ import java.util.Map;
  */
 public class InodeArgumentServiceImpl implements ArgumentService {
 
-    @Override
-    public Map<String, List<FileInfo>> handleArgument(File curPath, Map<String, List<FileInfo>> existFileMap) throws IOException {
-        for (Map.Entry<String, List<FileInfo>> entry : existFileMap.entrySet()) {
-            List<FileInfo> list = entry.getValue();
-            for (FileInfo fileInfo : list) {
-                fileInfo.setInode(FileUtils.getInode(fileInfo.getFile().getPath()));
-            }
-        }
+	@Override
+	public Map<String, List<FileInfo>> handleArgument(File curPath, Map<String, List<FileInfo>> existFileMap) throws IOException {
+		for (Map.Entry<String, List<FileInfo>> entry : existFileMap.entrySet()) {
+			List<FileInfo> list = entry.getValue();
+			for (FileInfo fileInfo : list) {
+				fileInfo.setInode(FileUtils.getInode(fileInfo.getFile().getPath()));
+			}
+		}
 
-        return existFileMap;
-    }
+		return existFileMap;
+	}
 }

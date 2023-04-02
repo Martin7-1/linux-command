@@ -14,13 +14,13 @@ import java.util.Map;
  */
 public interface ArgumentService {
 
-    /**
-     * 处理参数
-     *
-     * @param curPath      当前执行的目录路径
-     * @param existFileMap 已经处理出的文件信息，（文件目录路径，该路径下文件信息的映射）
-     * @return 根据参数处理出的文件信息
-     * @throws IOException IO 异常
-     */
-    Map<String, List<FileInfo>> handleArgument(File curPath, Map<String, List<FileInfo>> existFileMap) throws IOException;
+	/**
+	 * 处理参数
+	 *
+	 * @param curPath      当前执行的目录路径
+	 * @param existFileMap 已经处理出的文件信息，（文件目录路径，该路径下文件信息的映射）
+	 * @return 根据参数处理出的文件信息
+	 * @throws IOException IO 异常
+	 */
+	Map<String, List<FileInfo>> handleArgument(File curPath, Map<String, List<FileInfo>> existFileMap) throws IOException;
 }

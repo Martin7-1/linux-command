@@ -16,16 +16,16 @@ import java.util.Map;
  */
 public class CurDirArgumentServiceImpl implements ArgumentService {
 
-    @Override
-    public Map<String, List<FileInfo>> handleArgument(File curPath, Map<String, List<FileInfo>> existFileMap) {
-        Map<String, List<FileInfo>> ans = new HashMap<>(1);
-        List<FileInfo> fileList = new ArrayList<>(1);
-        String curDirName = curPath.getName();
-        fileList.add(FileInfo.builder()
-                .fileName(curDirName)
-                .file(curPath)
-                .build());
-        ans.put(curDirName, fileList);
-        return ans;
-    }
+	@Override
+	public Map<String, List<FileInfo>> handleArgument(File curPath, Map<String, List<FileInfo>> existFileMap) {
+		Map<String, List<FileInfo>> ans = new HashMap<>(1);
+		List<FileInfo> fileList = new ArrayList<>(1);
+		String curDirName = curPath.getName();
+		fileList.add(FileInfo.builder()
+			.fileName(curDirName)
+			.file(curPath)
+			.build());
+		ans.put(curDirName, fileList);
+		return ans;
+	}
 }

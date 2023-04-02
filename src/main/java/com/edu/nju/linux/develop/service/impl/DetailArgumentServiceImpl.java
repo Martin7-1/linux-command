@@ -18,20 +18,20 @@ import java.util.Map;
  */
 public class DetailArgumentServiceImpl implements ArgumentService {
 
-    @Override
-    public Map<String, List<FileInfo>> handleArgument(File curPath, Map<String, List<FileInfo>> existFileMap) throws IOException {
-        for (Map.Entry<String, List<FileInfo>> entry : existFileMap.entrySet()) {
-            for (FileInfo fileInfo : entry.getValue()) {
-                String pathName = fileInfo.getFile().getPath();
-                fileInfo.setAccessRights(FileUtils.getAccessRights(pathName));
-                fileInfo.setLinkNum(FileUtils.getLinkNum(pathName));
-                fileInfo.setUsername(FileUtils.getUsername(pathName));
-                fileInfo.setUserGroup(FileUtils.getUserGroup(pathName));
-                fileInfo.setSize(FileUtils.getSize(pathName));
-                fileInfo.setLastAccessTime(FileUtils.getLastAccessTime(pathName));
-            }
-        }
+	@Override
+	public Map<String, List<FileInfo>> handleArgument(File curPath, Map<String, List<FileInfo>> existFileMap) throws IOException {
+		for (Map.Entry<String, List<FileInfo>> entry : existFileMap.entrySet()) {
+			for (FileInfo fileInfo : entry.getValue()) {
+				String pathName = fileInfo.getFile().getPath();
+				fileInfo.setAccessRights(FileUtils.getAccessRights(pathName));
+				fileInfo.setLinkNum(FileUtils.getLinkNum(pathName));
+				fileInfo.setUsername(FileUtils.getUsername(pathName));
+				fileInfo.setUserGroup(FileUtils.getUserGroup(pathName));
+				fileInfo.setSize(FileUtils.getSize(pathName));
+				fileInfo.setLastAccessTime(FileUtils.getLastAccessTime(pathName));
+			}
+		}
 
-        return existFileMap;
-    }
+		return existFileMap;
+	}
 }

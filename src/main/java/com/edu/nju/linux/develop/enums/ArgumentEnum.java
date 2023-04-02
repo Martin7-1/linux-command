@@ -16,35 +16,35 @@ import java.util.Arrays;
 @AllArgsConstructor
 public enum ArgumentEnum {
 
-    /**
-     * 展示当前目录
-     */
-    CUR_DIR("-d"),
-    /**
-     * 递归展示所有目录
-     */
-    RECURSIVE("-R"),
-    /**
-     * 展示隐藏目录
-     */
-    HIDDEN("-a"),
-    /**
-     * 展示 inode 号
-     */
-    INODE("-i"),
-    /**
-     * 展示详细信息
-     */
-    DETAIL("-l");
+	/**
+	 * 展示当前目录
+	 */
+	CUR_DIR("-d"),
+	/**
+	 * 递归展示所有目录
+	 */
+	RECURSIVE("-R"),
+	/**
+	 * 展示隐藏目录
+	 */
+	HIDDEN("-a"),
+	/**
+	 * 展示 inode 号
+	 */
+	INODE("-i"),
+	/**
+	 * 展示详细信息
+	 */
+	DETAIL("-l");
 
-    @Getter
-    @Setter
-    private String name;
+	@Getter
+	@Setter
+	private String name;
 
-    public static ArgumentEnum getArgByName(String name) {
-        return Arrays.stream(ArgumentEnum.values())
-                .filter(arg -> arg.getName().equals(name))
-                .findAny()
-                .orElse(null);
-    }
+	public static ArgumentEnum getArgByName(String name) {
+		return Arrays.stream(ArgumentEnum.values())
+			.filter(arg -> arg.getName().equals(name))
+			.findAny()
+			.orElse(null);
+	}
 }

@@ -10,24 +10,24 @@ import com.edu.nju.linux.develop.service.impl.*;
  */
 public class ArgumentFactory {
 
-    private ArgumentFactory() {
+	private ArgumentFactory() {
 
-    }
+	}
 
-    public static ArgumentService produceArgumentService(ArgumentEnum argEnum) {
-        switch (argEnum) {
-            case CUR_DIR:
-                return new CurDirArgumentServiceImpl();
-            case INODE:
-                return new InodeArgumentServiceImpl();
-            case DETAIL:
-                return new DetailArgumentServiceImpl();
-            case HIDDEN:
-                return new HiddenArgumentServiceImpl();
-            case RECURSIVE:
-                return new RecursiveArgumentServiceImpl();
-            default:
-                throw new UnsupportedOperationException("不支持的参数: " + argEnum.getName());
-        }
-    }
+	public static ArgumentService produceArgumentService(ArgumentEnum argEnum) {
+		switch (argEnum) {
+			case CUR_DIR:
+				return new CurDirArgumentServiceImpl();
+			case INODE:
+				return new InodeArgumentServiceImpl();
+			case DETAIL:
+				return new DetailArgumentServiceImpl();
+			case HIDDEN:
+				return new HiddenArgumentServiceImpl();
+			case RECURSIVE:
+				return new RecursiveArgumentServiceImpl();
+			default:
+				throw new UnsupportedOperationException("不支持的参数: " + argEnum.getName());
+		}
+	}
 }
