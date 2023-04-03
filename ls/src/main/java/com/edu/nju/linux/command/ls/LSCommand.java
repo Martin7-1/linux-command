@@ -11,19 +11,24 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-public class LsCommand {
+/**
+ * ls 命令
+ *
+ * @author zhengyi
+ */
+public class LSCommand {
 
-	private LsCommand() {
+	private LSCommand() {
 		argList = new ArrayList<>();
 	}
 
-	public static LsCommand getInstance() {
+	public static LSCommand getInstance() {
 		return Holder.INSTANCE;
 	}
 
 	static class Holder {
 
-		static final LsCommand INSTANCE = new LsCommand();
+		static final LSCommand INSTANCE = new LSCommand();
 	}
 
 	private final List<ArgumentEnum> argList;

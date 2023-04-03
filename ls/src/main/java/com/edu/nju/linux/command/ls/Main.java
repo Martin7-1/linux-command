@@ -8,7 +8,7 @@ package com.edu.nju.linux.command.ls;
 public class Main {
 
 	public static void main(String[] args) {
-		LsCommand lsCommand = LsCommand.getInstance();
+		LSCommand lsCommand = LSCommand.getInstance();
 		lsCommand.initAndRun(args);
 	}
 }
