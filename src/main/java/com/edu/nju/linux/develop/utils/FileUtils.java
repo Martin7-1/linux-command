@@ -1,12 +1,16 @@
 package com.edu.nju.linux.develop.utils;
 
+import com.edu.nju.linux.develop.core.FileInfo;
+
 import java.io.IOException;
+import java.nio.file.FileStore;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.FileTime;
 import java.nio.file.attribute.PosixFileAttributes;
 import java.nio.file.attribute.PosixFilePermission;
+import java.util.List;
 import java.util.Set;
 
 import static java.nio.file.LinkOption.NOFOLLOW_LINKS;
@@ -64,6 +68,18 @@ public class FileUtils {
 		String objectStr = attributes.fileKey().toString();
 		int startIndex = objectStr.indexOf("ino=") + "ino=".length();
 		return objectStr.substring(startIndex, objectStr.length() - 1);
+	}
+
+	public static int getTotalBlock(List<FileInfo> fileList) throws IOException {
+		// FIXME: 计算 block
+		int totalBlock = 0;
+		for (FileInfo fileInfo : fileList) {
+			Path path = Paths.get(fileInfo.getFile().getPath());
+			FileStore fileStore = Files.getFileStore(path);
+			totalBlock += Math.ceil((double) fileStore.getBlockSize() / 512);
+		}
+
+		return totalBlock;
 	}
 
 	private static String getAccessRights(Set<PosixFilePermission> permissions) {

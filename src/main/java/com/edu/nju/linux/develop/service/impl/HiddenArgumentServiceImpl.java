@@ -34,11 +34,10 @@ public class HiddenArgumentServiceImpl implements ArgumentService {
 				.fileName(".")
 				.file(path)
 				.build());
-			// TODO: 如何获得父目录
-			System.out.println(path.getParent());
+			File parentFile = new File("../");
 			list.add(FileInfo.builder()
-				.fileName("..")
-				.file(path.getParentFile())
+				.fileName(parentFile.getName())
+				.file(parentFile)
 				.build());
 		}
 
