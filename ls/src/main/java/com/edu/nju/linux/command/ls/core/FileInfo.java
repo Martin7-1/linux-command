@@ -1,4 +1,4 @@
-package com.edu.nju.linux.develop.core;
+package com.edu.nju.linux.command.ls.core;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

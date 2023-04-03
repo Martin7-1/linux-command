@@ -1,6 +1,6 @@
-package com.edu.nju.linux.develop.utils;
+package com.edu.nju.linux.command.ls.utils;
 
-import com.edu.nju.linux.develop.core.FileInfo;
+import com.edu.nju.linux.command.ls.core.FileInfo;
 
 import java.io.File;
 import java.io.IOException;

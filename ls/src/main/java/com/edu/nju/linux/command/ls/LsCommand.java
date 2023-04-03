@@ -1,11 +1,11 @@
-package com.edu.nju.linux.develop;
+package com.edu.nju.linux.command.ls;
 
-import com.edu.nju.linux.develop.core.FileInfo;
-import com.edu.nju.linux.develop.enums.ArgumentEnum;
-import com.edu.nju.linux.develop.service.ArgumentFactory;
-import com.edu.nju.linux.develop.service.ArgumentService;
-import com.edu.nju.linux.develop.utils.FileUtils;
-import com.edu.nju.linux.develop.utils.OutputUtils;
+import com.edu.nju.linux.command.ls.core.FileInfo;
+import com.edu.nju.linux.command.ls.enums.ArgumentEnum;
+import com.edu.nju.linux.command.ls.service.ArgumentFactory;
+import com.edu.nju.linux.command.ls.service.ArgumentService;
+import com.edu.nju.linux.command.ls.utils.FileUtils;
+import com.edu.nju.linux.command.ls.utils.OutputUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -97,14 +97,12 @@ public class LsCommand {
 		if (containsArg(ArgumentEnum.DETAIL)) {
 			// 一个文件一行输出
 			// 如果有 -R 需要输出一下当前的目录路径
+			// -l 需要输出 total
 			if (containsArg(ArgumentEnum.RECURSIVE)) {
 				for (Map.Entry<String, List<FileInfo>> entry : fileMap.entrySet()) {
 					System.out.println(entry.getKey() + ":");
-					// 如果有 -i 需要输出一下 total block
-					if (containsArg(ArgumentEnum.INODE)) {
-						int totalBlock = FileUtils.getTotalBlock(entry.getValue());
-						System.out.println("total " + totalBlock);
-					}
+					int totalBlock = FileUtils.getTotalBlock(entry.getValue());
+					System.out.println("total " + totalBlock);
 					for (FileInfo info : entry.getValue()) {
 						System.out.println(OutputUtils.constructOutput(info));
 					}
@@ -112,10 +110,8 @@ public class LsCommand {
 				}
 			} else {
 				for (Map.Entry<String, List<FileInfo>> entry : fileMap.entrySet()) {
-					if (containsArg(ArgumentEnum.INODE)) {
-						int totalBlock = FileUtils.getTotalBlock(entry.getValue());
-						System.out.println("total " + totalBlock);
-					}
+					int totalBlock = FileUtils.getTotalBlock(entry.getValue());
+					System.out.println("total " + totalBlock);
 					for (FileInfo info : entry.getValue()) {
 						System.out.println(OutputUtils.constructOutput(info));
 					}
@@ -127,10 +123,6 @@ public class LsCommand {
 			if (containsArg(ArgumentEnum.RECURSIVE)) {
 				for (Map.Entry<String, List<FileInfo>> entry : fileMap.entrySet()) {
 					System.out.println(entry.getKey() + ":");
-					if (containsArg(ArgumentEnum.INODE)) {
-						int totalBlock = FileUtils.getTotalBlock(entry.getValue());
-						System.out.println("total " + totalBlock);
-					}
 					for (FileInfo info : entry.getValue()) {
 						System.out.print(OutputUtils.constructOutput(info) + "\t");
 					}
@@ -138,10 +130,6 @@ public class LsCommand {
 				}
 			} else {
 				for (Map.Entry<String, List<FileInfo>> entry : fileMap.entrySet()) {
-					if (containsArg(ArgumentEnum.INODE)) {
-						int totalBlock = FileUtils.getTotalBlock(entry.getValue());
-						System.out.println("total " + totalBlock);
-					}
 					for (FileInfo info : entry.getValue()) {
 						System.out.print(OutputUtils.constructOutput(info) + "\t");
 					}

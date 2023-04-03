@@ -1,7 +1,7 @@
-package com.edu.nju.linux.develop.service;
+package com.edu.nju.linux.command.ls.service;
 
-import com.edu.nju.linux.develop.enums.ArgumentEnum;
-import com.edu.nju.linux.develop.service.impl.*;
+import com.edu.nju.linux.command.ls.enums.ArgumentEnum;
+import com.edu.nju.linux.command.ls.service.impl.*;
 
 /**
  * 参数工厂类

@@ -1,4 +1,4 @@
-package com.edu.nju.linux.develop;
+package com.edu.nju.linux.command.ls;
 
 /**
  * 主类

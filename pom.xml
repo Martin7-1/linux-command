@@ -7,8 +7,13 @@
     <groupId>com.edu.nju</groupId>
     <artifactId>LinuxDevelop</artifactId>
     <version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>wc</module>
+		<module>ls</module>
+	</modules>
 
-    <properties>
+	<properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

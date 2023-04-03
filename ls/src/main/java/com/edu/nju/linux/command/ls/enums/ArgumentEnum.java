@@ -1,4 +1,4 @@
-package com.edu.nju.linux.develop.enums;
+package com.edu.nju.linux.command.ls.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

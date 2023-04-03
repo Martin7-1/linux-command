@@ -1,7 +1,7 @@
-package com.edu.nju.linux.develop.service.impl;
+package com.edu.nju.linux.command.ls.service.impl;
 
-import com.edu.nju.linux.develop.core.FileInfo;
-import com.edu.nju.linux.develop.service.ArgumentService;
+import com.edu.nju.linux.command.ls.core.FileInfo;
+import com.edu.nju.linux.command.ls.service.ArgumentService;
 
 import java.io.File;
 import java.util.ArrayList;
