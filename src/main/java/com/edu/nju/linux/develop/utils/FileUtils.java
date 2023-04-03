@@ -2,6 +2,7 @@ package com.edu.nju.linux.develop.utils;
 
 import com.edu.nju.linux.develop.core.FileInfo;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileStore;
 import java.nio.file.Files;
@@ -11,6 +12,7 @@ import java.nio.file.attribute.FileTime;
 import java.nio.file.attribute.PosixFileAttributes;
 import java.nio.file.attribute.PosixFilePermission;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import static java.nio.file.LinkOption.NOFOLLOW_LINKS;
@@ -71,15 +73,34 @@ public class FileUtils {
 	}
 
 	public static int getTotalBlock(List<FileInfo> fileList) throws IOException {
-		// FIXME: 计算 block
+		// 这里不包含计算 . 和 .. 的
 		int totalBlock = 0;
 		for (FileInfo fileInfo : fileList) {
-			Path path = Paths.get(fileInfo.getFile().getPath());
-			FileStore fileStore = Files.getFileStore(path);
-			totalBlock += Math.ceil((double) fileStore.getBlockSize() / 512);
+			if (!".".equals(fileInfo.getFileName()) && !"..".equals(fileInfo.getFileName())) {
+				Path path = Paths.get(fileInfo.getFile().getPath());
+				FileStore fileStore = Files.getFileStore(path);
+				long size = fileInfo.getSize();
+				totalBlock += Math.ceil((double) size / fileStore.getBlockSize()) * fileStore.getBlockSize() / 1024;
+			}
 		}
 
 		return totalBlock;
+	}
+
+	private static long getFileSize(File file) {
+		if (file == null) {
+			return 0;
+		}
+		long size = 0;
+		if (!file.isDirectory()) {
+			size += file.length();
+		} else {
+			for (File subFile : Objects.requireNonNull(file.listFiles())) {
+				size += getFileSize(subFile);
+			}
+		}
+
+		return size;
 	}
 
 	private static String getAccessRights(Set<PosixFilePermission> permissions) {
